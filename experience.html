@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Story | Greenary Organics</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Experience Page Specific Overrides */
+        body {
+            height: 350vh;
+            /* Allow sufficient scrolling for animation */
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .story-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 250vh;
+            /* Push content below animation area */
+            background: linear-gradient(to top, var(--bg-color), transparent);
+            text-align: center;
+            padding-bottom: 100px;
+            pointer-events: none;
+            /* Let clicks pass through transparent parts */
+        }
+
+        .story-cta {
+            pointer-events: auto;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Canvas for Parallax -->
+    <div class="hero-section">
+        <canvas id="parallax-canvas"></canvas>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h2 id="product-subtitle" class="hero-subtitle">Loading...</h2>
+                <h1 id="product-name" class="hero-title">PRODUCT STORY</h1>
+                <p id="product-description" class="hero-description">Scroll to explore the journey.</p>
+            </div>
+            <div class="scroll-prompt">
+                <span class="mouse-icon"></span>
+                <span>SCROLL TO EXPLORE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Call to Action -->
+    <div class="story-content">
+        <div class="container">
+            <div class="story-cta">
+                <h2>Ready to transform your garden?</h2>
+                <a id="buy-now-btn" href="index.html" class="btn btn-primary">View Product Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div class="loading-text">Loading Experience... <span id="loading-percent">0%</span></div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
