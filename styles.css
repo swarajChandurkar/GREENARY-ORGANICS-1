@@ -78,6 +78,10 @@ body {
     transition: background-color var(--transition-speed), color var(--transition-speed);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    width: 100%;
+    position: relative;
 }
 
 /* Premium Vignette Overlay */
@@ -1347,16 +1351,21 @@ button {
     /* Swipe Hint Animation */
     .swipe-hint {
         position: absolute;
-        bottom: 20%;
+        bottom: 120px;
+        /* Moved up slightly */
         left: 50%;
         transform: translateX(-50%);
-        width: 40px;
-        height: 6px;
-        background: rgba(255, 255, 255, 0.3);
+        width: 60px;
+        /* Slightly wider */
+        height: 4px;
+        background: rgba(255, 255, 255, 0.5);
+        /* More visible */
         border-radius: 4px;
         animation: swipeHint 2s infinite;
-        opacity: 0.8;
+        opacity: 0.9;
         pointer-events: none;
+        z-index: 20;
+        /* Ensure on top */
     }
 
     @keyframes swipeHint {
@@ -1373,20 +1382,34 @@ button {
         }
     }
 
+    /* Fix Floating Contact Button */
+    .floating-contact-container {
+        bottom: 20px;
+        right: 15px;
+    }
+
     /* Mobile Product Grid override */
     .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* Force 2 columns */
         gap: 0.75rem;
-        padding: 0 0.25rem;
+        padding: 0 0.5rem;
         margin-top: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .product-card {
         border-radius: 12px;
+        min-width: 0;
+        /* Allow card to shrink below content size if needed */
+        width: 100%;
     }
 
     .product-card-image {
-        height: 140px;
+        height: 120px;
+        /* Smaller image to fit */
     }
 
     .product-card-info {
