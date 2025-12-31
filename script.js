@@ -226,21 +226,46 @@ function renderFrame(index) {
     const img = images[index];
     if (!img || !ctx) return;
 
-    // Cover-style drawing
+    // Cover-style drawing with mobile adjustment
     const canvasRatio = canvas.width / canvas.height;
     const imgRatio = img.width / img.height;
     let drawWidth, drawHeight, offsetX, offsetY;
 
-    if (imgRatio > canvasRatio) {
-        drawHeight = canvas.height;
-        drawWidth = img.width * (canvas.height / img.height);
-        offsetX = (canvas.width - drawWidth) / 2;
-        offsetY = 0;
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        // Mobile: "Contain" or slightly zoomed out logic to fit product
+        // We prioritize width fitting so the product isn't cut off on sides
+        if (imgRatio > canvasRatio) {
+            // Image is wider than canvas (relative to aspect), so fitting width makes sense
+            drawWidth = canvas.width;
+            drawHeight = img.height * (canvas.width / img.width);
+            offsetX = 0;
+            offsetY = (canvas.height - drawHeight) / 2;
+        } else {
+            // Image is taller, fit height
+            drawHeight = canvas.height;
+            drawWidth = img.width * (canvas.height / img.height);
+            offsetX = (canvas.width - drawWidth) / 2;
+            offsetY = 0;
+        }
+
+        // Optional: Scale up slightly if it's too small (e.g., 1.2x) to fill more space without cutting off too much
+        // But user said "much bigger", so they probably want it essentially contained.
+        // Let's stick to pure fit/contain for now as it's the safest interpretation of "fit".
     } else {
-        drawWidth = canvas.width;
-        drawHeight = img.height * (canvas.width / img.width);
-        offsetX = 0;
-        offsetY = (canvas.height - drawHeight) / 2;
+        // Desktop: Keep existing "Cover" logic
+        if (imgRatio > canvasRatio) {
+            drawHeight = canvas.height;
+            drawWidth = img.width * (canvas.height / img.height);
+            offsetX = (canvas.width - drawWidth) / 2;
+            offsetY = 0;
+        } else {
+            drawWidth = canvas.width;
+            drawHeight = img.height * (canvas.width / img.width);
+            offsetX = 0;
+            offsetY = (canvas.height - drawHeight) / 2;
+        }
     }
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
