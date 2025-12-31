@@ -1328,7 +1328,14 @@ button {
     }
 
     .section {
-        padding: 5rem 1.5rem;
+        padding: 4rem 1rem;
+        /* Reduce side padding significantly */
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
     }
 
     .usage-steps {
@@ -1343,29 +1350,20 @@ button {
         background: linear-gradient(180deg, var(--accent), var(--card-border));
     }
 
-    .scroll-prompt,
-    .nav-controls {
-        display: none;
-    }
-
     /* Swipe Hint Animation */
     .swipe-hint {
         position: absolute;
         bottom: 120px;
-        /* Moved up slightly */
         left: 50%;
         transform: translateX(-50%);
         width: 60px;
-        /* Slightly wider */
         height: 4px;
         background: rgba(255, 255, 255, 0.5);
-        /* More visible */
         border-radius: 4px;
         animation: swipeHint 2s infinite;
         opacity: 0.9;
         pointer-events: none;
         z-index: 20;
-        /* Ensure on top */
     }
 
     @keyframes swipeHint {
@@ -1392,9 +1390,10 @@ button {
     .product-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr) !important;
-        /* Force 2 columns */
-        gap: 0.75rem;
-        padding: 0 0.5rem;
+        gap: 0.5rem;
+        /* Checked: 0.5rem is good for tight spacing */
+        padding: 0;
+        /* Remove grid padding to use full container width */
         margin-top: 1.5rem;
         width: 100%;
         box-sizing: border-box;
@@ -1403,41 +1402,44 @@ button {
     .product-card {
         border-radius: 12px;
         min-width: 0;
-        /* Allow card to shrink below content size if needed */
         width: 100%;
     }
 
     .product-card-image {
-        height: 120px;
-        /* Smaller image to fit */
+        height: 130px;
+        /* Slight increase for better visibility */
     }
 
     .product-card-info {
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem 0.25rem;
+        /* Tighter padding */
     }
 
     .product-card-info h3 {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        /* Increased from 0.95rem */
+        line-height: 1.2;
         margin-bottom: 0.25rem;
     }
 
     .product-card-price .amount {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        /* Slightly larger */
     }
 
     .product-card-price .unit {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
 
     .view-btn {
         display: none;
-        /* Hide view details button on mobile to save space/reduce clutter */
     }
 
     .btn-enquire {
         margin-top: 0.5rem;
         padding: 0.5rem;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+        /* Slightly larger text */
         width: 100%;
     }
 }
