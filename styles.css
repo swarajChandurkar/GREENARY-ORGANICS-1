@@ -1279,7 +1279,8 @@ button {
 
 @media (max-width: 768px) {
     .navbar {
-        padding: 1rem 1.5rem;
+        padding: 1rem 1rem;
+        /* Reduce side padding */
     }
 
     .nav-links {
@@ -1287,7 +1288,8 @@ button {
     }
 
     .hero-overlay {
-        padding: 0 2rem;
+        padding: 0 1.5rem;
+        /* Reduce side padding */
         flex-direction: column;
         justify-content: center;
     }
@@ -1295,10 +1297,13 @@ button {
     .hero-content-left {
         text-align: center;
         max-width: 100%;
+        padding-top: 0;
     }
 
     .hero-description {
         max-width: 100%;
+        font-size: 1rem;
+        /* Slightly smaller for mobile */
     }
 
     .hero-ctas {
@@ -1329,13 +1334,14 @@ button {
 
     .section {
         padding: 4rem 1rem;
-        /* Reduce side padding significantly */
+        /* Reduce section padding */
     }
 
     .container {
         width: 100%;
         max-width: 100%;
         padding: 0;
+        /* Remove container padding inside sections */
     }
 
     .usage-steps {
@@ -1350,20 +1356,29 @@ button {
         background: linear-gradient(180deg, var(--accent), var(--card-border));
     }
 
+    .scroll-prompt,
+    .nav-controls {
+        display: none;
+    }
+
     /* Swipe Hint Animation */
     .swipe-hint {
         position: absolute;
         bottom: 120px;
+        /* Moved up slightly */
         left: 50%;
         transform: translateX(-50%);
         width: 60px;
+        /* Slightly wider */
         height: 4px;
         background: rgba(255, 255, 255, 0.5);
+        /* More visible */
         border-radius: 4px;
         animation: swipeHint 2s infinite;
         opacity: 0.9;
         pointer-events: none;
         z-index: 20;
+        /* Ensure on top */
     }
 
     @keyframes swipeHint {
@@ -1390,10 +1405,11 @@ button {
     .product-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr) !important;
+        /* Force 2 columns */
         gap: 0.5rem;
-        /* Checked: 0.5rem is good for tight spacing */
+        /* Tighter gap */
         padding: 0;
-        /* Remove grid padding to use full container width */
+        /* Remove padding to use full width */
         margin-top: 1.5rem;
         width: 100%;
         box-sizing: border-box;
@@ -1402,29 +1418,30 @@ button {
     .product-card {
         border-radius: 12px;
         min-width: 0;
+        /* Allow card to shrink below content size if needed */
         width: 100%;
     }
 
     .product-card-image {
-        height: 130px;
-        /* Slight increase for better visibility */
+        height: 140px;
+        /* Increased slightly for better visibility */
     }
 
     .product-card-info {
         padding: 0.75rem 0.25rem;
-        /* Tighter padding */
+        /* Reduce side padding for text */
     }
 
     .product-card-info h3 {
         font-size: 1rem;
-        /* Increased from 0.95rem */
-        line-height: 1.2;
+        /* Increase text size */
         margin-bottom: 0.25rem;
+        line-height: 1.2;
     }
 
     .product-card-price .amount {
         font-size: 1.15rem;
-        /* Slightly larger */
+        /* Larger price */
     }
 
     .product-card-price .unit {
@@ -1433,13 +1450,13 @@ button {
 
     .view-btn {
         display: none;
+        /* Hide view details button on mobile to save space/reduce clutter */
     }
 
     .btn-enquire {
         margin-top: 0.5rem;
-        padding: 0.5rem;
+        padding: 0.6rem 0.2rem;
         font-size: 0.8rem;
-        /* Slightly larger text */
         width: 100%;
     }
 }
